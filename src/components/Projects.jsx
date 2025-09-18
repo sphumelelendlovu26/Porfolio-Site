@@ -10,8 +10,16 @@ const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
     if (projectsRef.current) {
       gsap.fromTo(
         projectsRef.current,
-        { opacity: 0, scale: 0.1, x: 100, y: -100 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", x: 0, y: 0 }
+        { opacity: 0, scale: 0.1, x: -200, y: -100, borderRadius: 100 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+          x: 0,
+          y: 0,
+          delay: 1,
+        }
       );
     }
   });
@@ -39,8 +47,8 @@ const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
   ];
 
   return (
-    <section className="size-full p-5  " ref={projectsRef}>
-      <div className="border border-gray-300 size-full relative rounded-lg bg-gray-50/10 backdrop-blur-xs overflow-hidden">
+    <section className="size-full p-5" ref={projectsRef}>
+      <div className="border border-gray-300 size-full relative rounded-lg bg-gray-50/10 backdrop-blur-sm overflow-hidden">
         <button
           onClick={() => handleCloseClick()}
           className="absolute right-2  p-2 rounded text-red-500 top-1"

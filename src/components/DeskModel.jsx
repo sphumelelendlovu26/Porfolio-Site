@@ -10,4 +10,4 @@ const DeskModel = () => {
   );
 };
 
-export default DeskModel;
+export default DeskModel; 

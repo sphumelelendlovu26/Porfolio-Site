@@ -1,10 +1,12 @@
 import Scene from "./components/Scene";
 import { useState } from "react";
 import Projects from "./components/Projects";
+import Contacts from "./components/Contacts";
 
 const App = () => {
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [isOpenLaptop, setIsOpenLaptop] = useState(false);
+  const [contactsOpen, setContatsOpen] = useState(false);
 
   return (
     <main className="h-[100vh] border">
@@ -13,15 +15,18 @@ const App = () => {
         setProjectsOpen={setProjectsOpen}
         setIsOpenLaptop={setIsOpenLaptop}
         isOpenLaptop={isOpenLaptop}
+        setContactsOpen={setContatsOpen}
       />
       {projectsOpen && (
         <div className="absolute inset-0 flex justify-center items-start  pointer-events-auto z-10">
           <Projects
             setIsOpenLaptop={setIsOpenLaptop}
             setProjectsOpen={setProjectsOpen}
+            isOpenLaptop={isOpenLaptop}
           />
         </div>
       )}
+      {contactsOpen && <Contacts setContactsOpen={setContatsOpen} />}
     </main>
   );
 };

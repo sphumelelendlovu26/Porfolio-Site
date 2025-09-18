@@ -2,15 +2,21 @@ import { Canvas } from "@react-three/fiber";
 import DeskModel from "./DeskModel";
 import LaptopModel from "./LaptopModel";
 import ShelfModel from "./ShelfModel";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Text, useTexture } from "@react-three/drei";
 import { Environment } from "@react-three/drei";
 import { Suspense } from "react";
+import PhoneModel from "./PhoneModel";
+import ProfilePicture from "./ProfilePicture";
+import Three from "./icons/Three";
+import CssModel from "./icons/Css";
+import ReactModel from "./icons/React";
 
 const Scene = ({
   projectsOpen,
   setProjectsOpen,
   isOpenLaptop,
   setIsOpenLaptop,
+  setContactsOpen,
 }) => {
   return (
     <Canvas
@@ -28,6 +34,13 @@ const Scene = ({
         intensity={1}
         castShadow
       />
+
+      {/* stack-icons */}
+      <CssModel />
+      <ReactModel />
+      <Three />
+
+      <ProfilePicture />
       <DeskModel />
       <LaptopModel
         projectsOpen={projectsOpen}
@@ -37,13 +50,51 @@ const Scene = ({
       />
       <ShelfModel />
 
+      <PhoneModel setContactsOpen={setContactsOpen} />
+
       <Suspense>
         <Environment preset="city" />
       </Suspense>
-
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.2, 0]}>
+      {/* floor */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.2, 2]}>
         <planeGeometry args={[20, 20]} />
-        <meshStandardMaterial color="#999" />
+        <meshStandardMaterial color="#888888" />
+      </mesh>
+
+      <mesh position={[0, 0, -5]}>
+        <boxGeometry args={[20, 10, 0.5]} />
+        <meshStandardMaterial color="#888888" />
+      </mesh>
+      <Text
+        position={[1, 3, -4]}
+        fontSize={0.4}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Hi, I'M SPHUMELELE NDLOVU{" "}
+      </Text>
+
+      <Text
+        position={[1, 2, -4]}
+        fontSize={0.35}
+        color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        A FRONTEND DEVELOPER{" "}
+      </Text>
+
+      {/* Left wall */}
+      <mesh position={[-10, 0, 0]} rotation={[0, Math.PI / 2, 0]}>
+        <boxGeometry args={[20, 10, 0.5]} />
+        <meshStandardMaterial color="#888888" />
+      </mesh>
+
+      {/* Right wall */}
+      <mesh position={[10, 0, 0]} rotation={[0, -Math.PI / 2, 0]}>
+        <boxGeometry args={[20, 10, 0.5]} />
+        <meshStandardMaterial color="#888888" />
       </mesh>
     </Canvas>
   );
