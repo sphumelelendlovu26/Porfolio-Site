@@ -24,14 +24,14 @@ const ProjectCard = ({ project }) => {
   }, []);
 
   return (
-    <div ref={cardRef} className="size-full p-5 rounded-lg  shadow-md">
+    <div ref={cardRef} className="size-full p-10 rounded-lg  shadow-md">
       <h2 className="animate-item mb-4 text-xl">{project.title}</h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
         <div className="animate-item mb-4  border rounded overflow-clip">
           <img src={project.previewImage} alt={project.alt} />
         </div>
         <div className="animate-item flex flex-col items-center  p-5 justify-around gap-2">
-          <p>{project.description}</p>
+          <p className="text-xl">{project.description}</p>
           <a
             className="border rounded p-1 w-1/3 text-center shadow-md"
             href={project.link}

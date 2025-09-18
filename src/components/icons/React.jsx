@@ -28,7 +28,7 @@ const ReactModel = () => {
         anchorX="center"
         anchorY="middle"
       >
-        react
+        React.js
       </Text>
     </>
   );

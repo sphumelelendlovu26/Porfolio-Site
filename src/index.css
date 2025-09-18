@@ -1,4 +1,13 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
   font-family: "Inter", sans-serif;
@@ -7,4 +16,7 @@ h1,
 h2,
 h3 {
   font-family: "Poppins", sans-serif;
+}
+.contacts {
+  @apply p-10 border;
 }
