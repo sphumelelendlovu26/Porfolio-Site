@@ -17,15 +17,24 @@ const Three = () => {
     <>
       <group
         ref={iconRef}
-        scale={[0.006, 0.006, 0.006]}
-        position={[3.5, 0.8, -2.5]}
+        scale={[0.0035, 0.0035, 0.0035]}
+        position={[3.5, -0.1, -2.3]}
       >
         <primitive object={scene}></primitive>
       </group>
       <Text
-        position={[3.5, 1.3, -2.5]}
-        fontSize={0.3}
+        position={[3.5, -0.05, -2.2]}
+        fontSize={0.2}
         color="white"
+        anchorX="center"
+        anchorY="middle"
+      >
+        Threejs
+      </Text>
+      <Text
+        position={[3.49, -0.05, -2.21]}
+        fontSize={0.2}
+        color="red"
         anchorX="center"
         anchorY="middle"
       >

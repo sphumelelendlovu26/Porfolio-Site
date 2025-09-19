@@ -27,8 +27,8 @@ const ProjectCard = ({ project }) => {
     <div ref={cardRef} className="size-full p-10 rounded-lg  shadow-md">
       <h2 className="animate-item mb-4 text-xl">{project.title}</h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div className="animate-item mb-4  border rounded overflow-clip">
-          <img src={project.previewImage} alt={project.alt} />
+        <div className="animate-item mb-4 rounded overflow-clip">
+          <img loading="lazy" src={project.previewImage} alt={project.alt} />
         </div>
         <div className="animate-item flex flex-col items-center  p-5 justify-around gap-2">
           <p className="text-xl">{project.description}</p>

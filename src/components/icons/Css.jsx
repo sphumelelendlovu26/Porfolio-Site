@@ -17,15 +17,25 @@ const CssModel = () => {
     <>
       <group
         ref={iconRef}
-        scale={[0.0035, 0.0035, 0.0035]}
-        position={[4.75, 0.1, -2.1]}
+        scale={[0.002, 0.002, 0.002]}
+        position={[4.5, -0.5, -1.6]}
       >
         <primitive object={scene}></primitive>
       </group>
       <Text
-        position={[4.75, 1.3, -2.1]} // slightly above the icon
-        fontSize={0.3}
+        position={[4.445, 0.0004, -1.45]} // slightly above the icon
+        fontSize={0.2}
         color="white"
+        anchorX="center"
+        anchorY="middle"
+        rotation={[0, -0.99, 0]}
+      >
+        Css3
+      </Text>{" "}
+      <Text
+        position={[4.446, 0.0004, -1.46]} // slightly above the icon
+        fontSize={0.2}
+        color="red"
         anchorX="center"
         anchorY="middle"
         rotation={[0, -0.99, 0]}

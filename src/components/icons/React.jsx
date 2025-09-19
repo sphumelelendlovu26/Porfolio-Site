@@ -14,16 +14,12 @@ const ReactModel = () => {
 
   return (
     <>
-      <group
-        ref={iconRef}
-        scale={[0.15, 0.15, 0.15]}
-        position={[5.5, 0.75, -1.3]}
-      >
+      <group ref={iconRef} scale={[0.1, 0.1, 0.1]} position={[5.5, -0.1, -1.3]}>
         <primitive object={scene}></primitive>
       </group>
       <Text
-        position={[5.5, 1.3, -1.3]}
-        fontSize={0.3}
+        position={[5.5, 0.25, -1.3]}
+        fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
