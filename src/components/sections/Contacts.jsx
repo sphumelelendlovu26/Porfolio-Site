@@ -16,44 +16,66 @@ const Contacts = ({ setContactsOpen }) => {
         { opacity: 0, scale: 0.1, x: 100, y: -100 },
         { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", x: 0, y: 0 }
       );
+      gsap.fromTo(
+        ".stagger",
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          stagger: 0.3,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.25,
+          ease: "power3.out",
+        }
+      );
     }
   });
 
   return (
-    <section
-      className="fixed top-10 max-w-2xl size-2/3 left-1/2   translate-x-[-50%] traanslate-y-[-50%] p-10 w-1/2"
-      ref={contactsRef}
-    >
-      <div className="border border-gray-300 size-full relative p-10 rounded-lg bg-gray-50/20 backdrop-blur-sm overflow-hidden">
+    <section className="fixed top-0 left-0 size-full " ref={contactsRef}>
+      <div className="border stagger top-1/2 max-w-2xl   left-1/2 translate-x-[-50%] translate-y-[-50%] border-gray-500 bg-gray-900/20 page sm:w-1/2 size-4/5  absolute  rounded-lg  backdrop-blur-sm overflow-hidden">
         <button
           onClick={() => handleCloseClick()}
           className="absolute right-2  p-2 rounded text-red-500 top-1"
         >
           x
         </button>
-        <h2 className="text-center text-xl  p-4  tracking-widest">
-          TALK TO ME
-        </h2>
-        <div className="flex  items-center h-15 justify-around">
-          <h3>
+        <h2 className="text-center stagger tracking-widest ">TALK TO ME </h2>
+        <div className="flex items-center  h-10 justify-around">
+          <h3 className="stagger">
             Checkout my socials
-            <a
-              className=" text-lg animation-duration-5000 hover:text-gray-700"
-              href="https://github.com/sphumelelendlovu26/"
-              target="_blank"
-            >
-              <box-icon
-                className="animate-bounce ml-10"
-                type="logo"
-                name="github"
-              ></box-icon>{" "}
-            </a>
+            <div className="linksContainer  flex justify-around">
+              <a
+                className=" text-lg animation-duration-5000  hover:text-gray-700"
+                href="https://github.com/sphumelelendlovu26/"
+                target="_blank"
+              >
+                <box-icon
+                  className="animate-bounce ml-10"
+                  type="logo"
+                  name="github"
+                ></box-icon>{" "}
+              </a>
+              <a
+                className=" text-lg animation-duration-5000  hover:text-gray-700"
+                href="https://github.com/sphumelelendlovu26/"
+                target="_blank"
+              >
+                <box-icon type="logo" name="instagram"></box-icon>
+              </a>
+            </div>
           </h3>{" "}
         </div>
-        <h2 className="text-center">
+        <h3 className="text-center stagger">
           OR <br /> Send Me An Email Below
-        </h2>
-        <ContactForm />
+        </h3>
+        <div className="stagger">
+          <ContactForm />
+        </div>
       </div>
     </section>
   );

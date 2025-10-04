@@ -1,17 +1,24 @@
+import { useEffect } from "react";
 import profilePicture from "/picture-texture.jpg";
 import { useTexture } from "@react-three/drei";
+import { useHover } from "@/hooks/useHover";
 
 const ProfilePicture = ({ isAboutMeOpen, setIsAboutMeOpen }) => {
   const texture = useTexture(profilePicture);
-
   const handlePictureClick = () => {
-    if (isAboutMeOpen !== true) {
-      setIsAboutMeOpen(true);
-    }
+    setIsAboutMeOpen(true);
   };
+  const { hoverProps } = useHover();
+  useEffect(() => {
+    console.log("About Me Open ", isAboutMeOpen);
+  }, [isAboutMeOpen]);
 
   return (
-    <mesh position={[-3.5, 2.5, -4]} onClick={handlePictureClick}>
+    <mesh
+      {...hoverProps}
+      position={[-3.35, 2.445, -3.9]}
+      onClick={handlePictureClick}
+    >
       <planeGeometry args={[3, 2]} />
       <meshBasicMaterial map={texture} />
     </mesh>

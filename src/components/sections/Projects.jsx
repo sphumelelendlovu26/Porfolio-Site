@@ -31,7 +31,6 @@ const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
     if (!isOpenLaptop) {
       setIsOpenLaptop(false);
     }
-    console.log("open laptop ?", isOpenLaptop);
   };
 
   const projects = [
@@ -46,18 +45,19 @@ const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
   ];
 
   return (
-    <section className="size-full p-10" ref={projectsRef}>
-      <div className="border border-gray-300 p-10 size-full relative rounded-lg bg-gray-50/10 backdrop-blur-sm overflow-hidden">
+    <section className="size-full p-10 " ref={projectsRef}>
+      <div className="border  p-10 size-full relative rounded-sm border-gray-500 overflow-clip bg-gray-900/20 backdrop-blur-sm  page">
+        >
         <button
           onClick={() => handleCloseClick()}
           className="absolute right-2  p-2 rounded text-red-500 top-1"
         >
           x
         </button>
-        <h2 className="text-center text-2xl p-5 underline tracking-widest">
+        <h2 className="text-center sm:text-2xl text-lg p-5 underline tracking-widest stagger">
           Projects
         </h2>
-        <div className="h-full overflow-y-scroll">
+        <div className="h-full overflow-y-scroll ">
           {projects.map((project) => (
             <ProjectCard project={project} key={project.id} />
           ))}

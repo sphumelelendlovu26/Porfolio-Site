@@ -20,20 +20,37 @@ const ProjectCard = ({ project }) => {
           delay: 0.2,
         }
       );
+
+      gsap.fromTo(
+        ".stagger",
+        {
+          opacity: 0,
+          y: 50,
+          duration: 0.6,
+          stagger: 0.3,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.5,
+          ease: "power3.out",
+        }
+      );
     }
   }, []);
 
   return (
-    <div ref={cardRef} className="size-full p-10 rounded-lg  shadow-md">
-      <h2 className="animate-item mb-4 text-xl">{project.title}</h2>
+    <div ref={cardRef} className="size-full p-10 rounded-sm  shadow-md">
+      <h2 className="animate-item mb-4 sm:text-xl stagger">{project.title}</h2>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2">
-        <div className="animate-item mb-4 rounded overflow-clip">
+        <div className="animate-item mb-4 rounded  stagger">
           <img loading="lazy" src={project.previewImage} alt={project.alt} />
         </div>
-        <div className="animate-item flex flex-col items-center  p-5 justify-around gap-2">
-          <p className="text-xl">{project.description}</p>
+        <div className="animate-item flex  flex-col items-center  p-5 justify-around gap-10">
+          <p className="sm:text-xl stagger">{project.description}</p>
           <a
-            className="border rounded p-1 w-1/3 text-center shadow-md"
+            className="border stagger rounded p-1 w-1/3 text-center shadow-md"
             href={project.link}
             target="_blank"
           >

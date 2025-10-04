@@ -11,12 +11,42 @@
 
 body {
   font-family: "Inter", sans-serif;
+  color: white;
 }
 h1,
 h2,
 h3 {
   font-family: "Poppins", sans-serif;
 }
+h2 {
+  @apply sm:text-xl;
+}
+h3 {
+  @apply sm:text-lg;
+}
+
 .contacts {
   @apply p-10;
+}
+.page {
+  @apply p-4;
+}
+.page h2 {
+  @apply mb-4;
+}
+textarea,
+input {
+  @apply p-1;
+}
+button {
+  cursor: pointer;
+}
+form {
+  @apply mt-2;
+}
+.aboutMe {
+  @apply sm:size-1/2;
+}
+.linksContainer {
+  @apply my-2;
 }

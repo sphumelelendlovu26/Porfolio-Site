@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import DeskModel from "./models/DeskModel";
 import LaptopModel from "./models/LaptopModel";
 import ShelfModel from "./ShelfModel";
-import { OrbitControls, Text } from "@react-three/drei";
+import { Html, OrbitControls, Text } from "@react-three/drei";
 import { Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import PhoneModel from "./models/PhoneModel";
@@ -16,6 +16,8 @@ import LeftWall from "./walls/LeftWall";
 import RightWall from "./walls/RightWall";
 import Roof from "./walls/Roof";
 import BedModel from "./models/BedModel";
+import GitHub from "./icons/GitHub";
+import PictureFrameModel from "./models/PictureFrameModel";
 
 const Scene = ({
   projectsOpen,
@@ -29,19 +31,21 @@ const Scene = ({
   return (
     <Canvas
       camera={{
-        position: [0, 1.5, 6],
+        position: [0, 1.5, 7],
         fov: 50,
       }}
       className="bg-gray-400 "
+      shadows
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
-          maxDistance={8}
+          maxDistance={7}
           minDistance={4}
           minPolarAngle={Math.PI / 4}
           maxPolarAngle={Math.PI / 2}
-          minAzimuthAngle={-Math.PI / 4}
-          maxAzimuthAngle={Math.PI / 4}
+          minAzimuthAngle={-Math.PI / 3}
+          maxAzimuthAngle={Math.PI / 3}
+          enablePan={false}
         />
         <ambientLight intensity={0.6} />
         <directionalLight
@@ -52,10 +56,17 @@ const Scene = ({
           castShadow
         />
         {/* stack-icons */}
-        <CssModel />
-        <ReactModel />
-        <Three />
-        <Floor />
+        <group>
+          <CssModel />
+          <ReactModel />
+          <Three />
+          <GitHub />
+          <ShelfModel />
+          <Text scale={0.2} position={[4.5, 0.7, -2]} rotation={[0, 5.65, 0]}>
+            My Tech Stack
+          </Text>
+        </group>
+        {/* _______divider_________ */}
         <BedModel />{" "}
         <Suspense>
           <Environment preset="city" />
@@ -103,7 +114,7 @@ const Scene = ({
             A FRONTEND DEVELOPER
           </Text>
           <Text
-            position={[-3.5, 3.7, -4]}
+            position={[-3.5, 3.8, -4]}
             fontSize={0.15}
             color="white"
             anchorX="center"
@@ -112,7 +123,7 @@ const Scene = ({
             Click Picture To View Info About Me{" "}
           </Text>
           <Text
-            position={[-3.49, 3.7, -4.01]}
+            position={[-3.49, 3.8, -4.01]}
             fontSize={0.15}
             color="red"
             anchorX="center"
@@ -124,8 +135,9 @@ const Scene = ({
             setIsAboutMeOpen={setIsAboutMeOpen}
             isAboutMeOpen={isAboutMeOpen}
           />
+          <PictureFrameModel />
         </group>
-        {/* walls */}
+        {/* walls */} <Floor />
         <LeftWall />
         <RightWall />
         {/* phone, laptop ,desk group */}
@@ -175,7 +187,6 @@ const Scene = ({
             Click Phone To Contact Me{" "}
           </Text>
         </group>{" "}
-        <ShelfModel />
         <Roof />
       </Suspense>
     </Canvas>

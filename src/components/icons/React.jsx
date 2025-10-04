@@ -18,11 +18,22 @@ const ReactModel = () => {
         <primitive object={scene}></primitive>
       </group>
       <Text
-        position={[5.5, 0.25, -1.3]}
+        position={[5.3, -0.05, -1.0]}
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
+        rotation={[0, 5.7, 0]}
+      >
+        React.js
+      </Text>
+      <Text
+        position={[5.31, -0.05, -1.01]}
+        fontSize={0.2}
+        color="red"
+        anchorX="center"
+        anchorY="middle"
+        rotation={[0, 5.7, 0]}
       >
         React.js
       </Text>

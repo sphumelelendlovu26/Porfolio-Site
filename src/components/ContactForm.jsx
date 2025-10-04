@@ -1,6 +1,5 @@
-import React, { useRef } from "react";
 import emailjs from "emailjs-com";
-
+import { useRef } from "react";
 const ContactForm = () => {
   const formRef = useRef();
 
@@ -26,23 +25,19 @@ const ContactForm = () => {
   };
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={sendEmail}
-      className=" p-5 flex gap-5 flex-col"
-    >
+    <form ref={formRef} onSubmit={sendEmail} className="flex gap-5  flex-col">
       {" "}
-      <div className="border-b-2 border-b-blue-500">
+      <div className="border-b-1 border-b-gray-300 rounded">
         {" "}
         <input
-          className="p-2 w-full outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+          className="p-1 w-full outline-none  transition-all duration-300"
           type="text"
           name="name"
           placeholder="Your Name"
           required
         />
       </div>
-      <div className=" border-b-2 border-b-blue-500">
+      <div className=" border-b-1 rounded border-b-gray-300">
         <input
           className="w-full p-2 outline-0"
           type="email"
@@ -52,12 +47,17 @@ const ContactForm = () => {
         />
       </div>
       <textarea
-        className="h-50 border-1 border-blue-500 p-2"
+        className="h-50 border-1 rounded border-gray-300 "
         name="message"
         placeholder="Your Message"
         required
       />
-      <button type="submit">Send</button>
+      <button
+        className="border rounded hover:text-[#EA4335] hover:border-white w-1/2 self-center transition"
+        type="submit"
+      >
+        Send
+      </button>
     </form>
   );
 };

@@ -1,49 +1,44 @@
 import { useGLTF } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import { Text } from "@react-three/drei";
 
-const Three = () => {
-  const { scene } = useGLTF("/three-model/scene.gltf");
-  const iconRef = useRef();
-
+const GitHub = () => {
+  const { scene } = useGLTF("/github-model/scene.gltf");
+  const groupRef = useRef();
   useFrame(() => {
-    if (iconRef.current) {
-      iconRef.current.rotation.y += 0.01;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += 0.01;
     }
   });
 
   return (
     <>
-      <group
-        ref={iconRef}
-        scale={[0.0035, 0.0035, 0.0035]}
-        position={[3.5, -0.1, -2.3]}
-      >
+      <group ref={groupRef} scale={0.005} position={[5.5, -0.85, -1.3]}>
         <primitive object={scene}></primitive>
       </group>
       <Text
-        position={[3.5, -0.05, -2.1]}
+        position={[5.5, -0.85, -1.3]}
         fontSize={0.2}
         color="white"
         anchorX="center"
         anchorY="middle"
         rotation={[0, 5.55, 0]}
       >
-        Threejs
+        GitHub
       </Text>
       <Text
-        position={[3.51, -0.05, -2.11]}
+        rotation={[0, 5.55, 0]}
+        position={[5.51, -0.85, -1.31]}
         fontSize={0.2}
         color="red"
         anchorX="center"
         anchorY="middle"
-        rotation={[0, 5.55, 0]}
       >
-        Threejs
+        GitHub
       </Text>
     </>
   );
 };
 
-export default Three;
+export default GitHub;

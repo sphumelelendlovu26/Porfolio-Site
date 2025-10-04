@@ -34,10 +34,14 @@ const LaptopModel = ({ setProjectsOpen, isOpenLaptop, setIsOpenLaptop }) => {
     <group
       {...hoverProps}
       ref={group}
-      position={[-1, 0.3, 0]}
+      position={[-1, 0.35, 0]}
       onClick={handleClick}
     >
-      <primitive scale={0.25} castShadow object={scene}></primitive>
+      <primitive
+        scale={[0.25, 0.3, 0.25]}
+        castShadow
+        object={scene}
+      ></primitive>
     </group>
   );
 };
