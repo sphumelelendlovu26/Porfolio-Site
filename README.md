@@ -1,12 +1,36 @@
-# React + Vite
+# 🧑‍💻 Sphumelele Ndlovu — Personal Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive 3D portfolio built using **React**, **Vite**, **TailwindCSS**, and **Three.js** via React Three Fiber. This site showcases my frontend development skills, creative branding, and ability to learn and implement new technologies.
 
-Currently, two official plugins are available:
+## 🚀 Live Site
+[Visit the portfolio](https://s-ndlovu-porfolio.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Purpose
+I built this project to explore how 3D elements can elevate user experience and storytelling on the web. It was a hands-on way to learn React Three Fiber, animation libraries, and scene composition — while crafting a space that reflects my personality and technical growth.
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
+- **React** — UI framework
+- **Vite** — Fast build tool
+- **TailwindCSS** — Utility-first styling
+- **Three.js** — 3D rendering
+- **React Three Fiber** — Three.js in React
+- **Drei** — Useful helpers for R3F
+- **GSAP + ScrollTrigger** — Scroll-linked animations
+- **Lenis** — Smooth scrolling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🎨 Features
+- Custom 3D room with interactive laptop, phone, and picture frame
+- Clickable models that trigger modals and reveal content
+- Branded tech stack wall with glowing icons
+- Scroll-linked animations and camera control
+- Ambient lighting and realistic shadows
+- Responsive layout (desktop-first; mobile optimization coming soon)
+
+## 📱 Mobile Status
+Currently optimized for desktop. Mobile support is in progress — I deployed early to test responsiveness across devices and gather feedback.
+
+## 📦 Installation
+
+```bash
+npm install
+npm run dev
