@@ -1,28 +1,31 @@
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ProjectCard from "../ProjectCard";
-import swiftbuy from "../../images/swiftbuy-preview.JPG";
+import { lazy, useLayoutEffect, useRef } from "react";
 
+const ProjectCard = lazy(() => import("../ProjectCard"));
+const swiftbuy = lazy(() => import("../../images/swiftbuy-preview.JPG"));
 const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
   const projectsRef = useRef();
 
-  useEffect(() => {
-    if (projectsRef.current) {
-      gsap.fromTo(
-        projectsRef.current,
-        { opacity: 0, scale: 0.1, x: -200, y: -100, borderRadius: 100 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: "power3.out",
-          x: 0,
-          y: 0,
-          delay: 1,
-        }
-      );
-    }
-  });
+  useLayoutEffect(() => {
+    const loadGsap = async () => {
+      if (projectsRef.current) {
+        const gsap = await import("gsap");
+        gsap.fromTo(
+          projectsRef.current,
+          { opacity: 0, scale: 0.1, x: -200, y: -100, borderRadius: 100 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            x: 0,
+            y: 0,
+            delay: 1,
+          }
+        );
+      }
+    };
+    loadGsap();
+  }, []);
 
   //x button click
   const handleCloseClick = () => {
@@ -47,7 +50,6 @@ const Projects = ({ setProjectsOpen, setIsOpenLaptop, isOpenLaptop }) => {
   return (
     <section className="size-full p-10 " ref={projectsRef}>
       <div className="border  p-10 size-full relative rounded-sm border-gray-500 overflow-clip bg-gray-900/20 backdrop-blur-sm  page">
-        >
         <button
           onClick={() => handleCloseClick()}
           className="absolute right-2  p-2 rounded text-red-500 top-1"

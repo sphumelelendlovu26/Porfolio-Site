@@ -1,5 +1,4 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 const AboutMe = ({ isAboutMeOpen, setIsAboutMeOpen }) => {
   const AboutMeRef = useRef();
@@ -11,6 +10,10 @@ const AboutMe = ({ isAboutMeOpen, setIsAboutMeOpen }) => {
   }
 
   useEffect(() => {
+    const loadGsap = async () => {
+      const gsap = await import("gsap");
+    };
+
     if (AboutMeRef.current) {
       gsap.fromTo(
         AboutMeRef.current,
@@ -91,4 +94,4 @@ const AboutMe = ({ isAboutMeOpen, setIsAboutMeOpen }) => {
     </section>
   );
 };
-export default AboutMe;
+export default React.memo(AboutMe);

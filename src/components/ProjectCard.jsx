@@ -1,43 +1,46 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 
 const ProjectCard = ({ project }) => {
   const cardRef = useRef();
 
-  useEffect(() => {
-    if (cardRef.current) {
-      const elements = cardRef.current.querySelectorAll(".animate-item");
+  useLayoutEffect(() => {
+    const loadGsap = async () => {
+      if (cardRef.current) {
+        const gsap = await import("gsap");
+        const elements = cardRef.current.querySelectorAll(".animate-item");
 
-      gsap.fromTo(
-        elements,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          ease: "power3.out",
-          stagger: 0.15,
-          delay: 0.2,
-        }
-      );
+        gsap.fromTo(
+          elements,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.4,
+            ease: "power3.out",
+            stagger: 0.15,
+            delay: 0.2,
+          }
+        );
 
-      gsap.fromTo(
-        ".stagger",
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          stagger: 0.3,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.5,
-          ease: "power3.out",
-        }
-      );
-    }
+        gsap.fromTo(
+          ".stagger",
+          {
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            stagger: 0.3,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.5,
+            ease: "power3.out",
+          }
+        );
+      }
+    };
+    loadGsap();
   }, []);
 
   return (

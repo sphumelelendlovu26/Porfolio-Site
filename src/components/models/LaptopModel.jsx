@@ -2,9 +2,24 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useRef, useEffect } from "react";
 import { useHover } from "@/hooks/useHover";
 import * as THREE from "three";
-
+import "./setupKTX2Loader";
+import { KTX2Loader } from "three/examples/jsm/Addons.js";
+import { useThree } from "@react-three/fiber";
 const LaptopModel = ({ setProjectsOpen, isOpenLaptop, setIsOpenLaptop }) => {
-  const { scene, animations } = useGLTF("/laptop-model/scene.gltf");
+  const gl = useThree((state) => state.gl);
+  const { scene, animations } = useGLTF(
+    "/laptop-model/scene.glb",
+    undefined,
+    undefined,
+    (loader) => {
+      const ktx2loader = new KTX2Loader();
+      ktx2loader.setTranscoderPath(
+        "https://cdn.jsdelivr.net/gh/pmndrs/drei-assets/basis/"
+      );
+      ktx2loader.detectSupport(gl);
+      loader.setKTX2Loader(ktx2loader);
+    }
+  );
   const group = useRef();
   const { actions } = useAnimations(animations, group);
   const { hoverProps } = useHover();

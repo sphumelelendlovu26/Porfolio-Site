@@ -1,7 +1,6 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import React, { lazy, useEffect, useRef } from "react";
 import "boxicons";
-import ContactForm from "../ContactForm";
+const ContactForm = lazy(() => import("../ContactForm"));
 
 const Contacts = ({ setContactsOpen }) => {
   const contactsRef = useRef();
@@ -10,30 +9,41 @@ const Contacts = ({ setContactsOpen }) => {
     setContactsOpen(false);
   };
   useEffect(() => {
-    if (contactsRef.current) {
-      gsap.fromTo(
-        contactsRef.current,
-        { opacity: 0, scale: 0.1, x: 100, y: -100 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: "power3.out", x: 0, y: 0 }
-      );
-      gsap.fromTo(
-        ".stagger",
-        {
-          opacity: 0,
-          y: 50,
-          duration: 0.6,
-          stagger: 0.3,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.25,
-          ease: "power3.out",
-        }
-      );
-    }
-  });
+    const loadGsap = async () => {
+      if (contactsRef.current) {
+        const gsap = await import("gsap");
+        gsap.fromTo(
+          contactsRef.current,
+          { opacity: 0, scale: 0.1, x: 100, y: -100 },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "power3.out",
+            x: 0,
+            y: 0,
+          }
+        );
+        gsap.fromTo(
+          ".stagger",
+          {
+            opacity: 0,
+            y: 50,
+            duration: 0.6,
+            stagger: 0.3,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            stagger: 0.25,
+            ease: "power3.out",
+          }
+        );
+      }
+    };
+    loadGsap();
+  }, []);
 
   return (
     <section className="fixed top-0 left-0 size-full " ref={contactsRef}>
@@ -81,4 +91,4 @@ const Contacts = ({ setContactsOpen }) => {
   );
 };
 
-export default Contacts;
+export default React.memo(Contacts);

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import profilePicture from "/picture-texture.jpg";
 import { useTexture } from "@react-three/drei";
 import { useHover } from "@/hooks/useHover";
@@ -9,9 +8,6 @@ const ProfilePicture = ({ isAboutMeOpen, setIsAboutMeOpen }) => {
     setIsAboutMeOpen(true);
   };
   const { hoverProps } = useHover();
-  useEffect(() => {
-    console.log("About Me Open ", isAboutMeOpen);
-  }, [isAboutMeOpen]);
 
   return (
     <mesh
